@@ -15,11 +15,12 @@ namespace Hollan.Function
         [FunctionName("Redirect")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [Blob("glympse/url.txt", FileAccess.Read)] string input,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            var redirectionResponse = new RedirectResult("https://azure.com/functions", true);
+            var redirectionResponse = new RedirectResult(input, true);
 
             return redirectionResponse;
         }
