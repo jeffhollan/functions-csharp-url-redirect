@@ -20,7 +20,7 @@ namespace Hollan.Function
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            var redirectionResponse = new RedirectResult(input, true);
+            var redirectionResponse = new RedirectResult(input, false);
 
             return redirectionResponse;
         }
